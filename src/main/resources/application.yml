@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: "ums_mail_service"
+  thymeleaf:
+    check-template-location: false
+  mail:
+    host: smtp.gmail.com
+    username: jjohn999118@gmail.com
+    password: ${PASSWORD}
+    port: 465
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+          auth: true
+        debug: true
+    default-encoding: UTF-8
+    test-connection: false
