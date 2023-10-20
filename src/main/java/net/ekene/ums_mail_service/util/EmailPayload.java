@@ -2,15 +2,18 @@ package net.ekene.ums_mail_service.util;
 
 import lombok.*;
 
+import java.util.Map;
+
 @Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Email {
-    private String firstName;
+public class EmailPayload {
     private String recipientAddress;
-    private String role;
+    private Map<String, Object> variables;
+    private String templateName;
+    private String mailSubject;
 
 }

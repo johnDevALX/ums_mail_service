@@ -5,7 +5,7 @@ import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
 import net.ekene.ums_mail_service.service.MailService;
 import net.ekene.ums_mail_service.service.ThymeleafService;
-import net.ekene.ums_mail_service.util.Email;
+import net.ekene.ums_mail_service.util.EmailPayload;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -24,7 +24,7 @@ public class MailServiceImpl implements MailService {
     private String name;
 
     @Override
-    public void sendMail(Email email, Map<String, Object> variables, String templateName, String subject) {
+    public void sendMail(EmailPayload email) {
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage,
@@ -39,9 +39,9 @@ public class MailServiceImpl implements MailService {
 //            variables.put("firstName", email.getFirstName());
 //            variables.put("email", email.getEmail());
 //            variables.put("role", email.getRole());
-            messageHelper.setText(thymeleafService.createContent(templateName, variables), true);
+            messageHelper.setText(thymeleafService.createContent(email.getTemplateName(), email.getVariables()), true);
             messageHelper.setFrom(name);
-            messageHelper.setSubject(subject);
+            messageHelper.setSubject(email.getMailSubject());
 
             javaMailSender.send(mimeMessage);
         } catch (MessagingException e) {

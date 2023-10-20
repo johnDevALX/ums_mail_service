@@ -1,10 +1,10 @@
 package net.ekene.ums_mail_service.service;
 
 
-import net.ekene.ums_mail_service.util.Email;
+import net.ekene.ums_mail_service.util.EmailPayload;
 
 import java.util.Map;
 
 public interface MailService {
-    void sendMail(Email email, Map<String, Object> variable, String templateName, String subject);
+    void sendMail(EmailPayload email);
 }
