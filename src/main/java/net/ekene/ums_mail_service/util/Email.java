@@ -10,7 +10,7 @@ import lombok.*;
 @ToString
 public class Email {
     private String firstName;
-    private String email;
+    private String recipientAddress;
     private String role;
 
 }

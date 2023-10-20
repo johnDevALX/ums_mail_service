@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/email")
@@ -17,7 +20,14 @@ public class MailController {
 
     @PostMapping("send-email")
     public ResponseEntity<?> sendEmail(@RequestBody Email email){
-        mailService.sendMail(email);
+        String templateName = "test_mail.html";
+        String mailSubject = "no-reply mail";
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("firstName", email.getFirstName());
+        variables.put("email", email.getRecipientAddress());
+        variables.put("role", email.getRole());
+
+        mailService.sendMail(email, variables, templateName, mailSubject);
         return ResponseEntity.ok("Email Sent");
     }
 }
