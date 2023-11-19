@@ -1,26 +1,24 @@
 package net.ekene.ums_mail_service.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.ekene.ums_mail_service.service.MailService;
-import net.ekene.ums_mail_service.util.EmailPayload;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/email")
+@Slf4j
+@RequestMapping("/email")
 public class MailController {
-    private final MailService mailService;
 
     @PostMapping("send-email")
-    public ResponseEntity<?> sendEmail(@RequestBody EmailPayload email){
-        mailService.sendMail(email);
-        return ResponseEntity.ok("EmailPayload Sent");
+    public ResponseEntity<?> sendEmail(@RequestBody String text){
+        log.info("payload {}", text);
+        return ResponseEntity.ok(text);
     }
 }
