@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Verify Email</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @media screen and (max-width: 768px) {
+            table {
+                min-width: auto;
+                width: 100%;
+            }
+
+            .cta-button {
+                display: inline-block;
+                background: #0f4c75;
+                color: #e4fbff;
+                text-decoration: none;
+                padding: 7px 20px;
+                font-size: 1.2em;
+                margin-top: 20px;
+                border-radius: 5px;
+            }
+
+            .social-icons {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .social-icons i {
+                font-size: 1em;
+                margin: 0 10px;
+                color: #0f4c75;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #0f4c75;
+            color: #e4fbff;
+            text-decoration: none;
+            padding: 7px 20px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .social-icons {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons i {
+            font-size: 1em;
+            margin: 0 10px;
+            color: #0f4c75;
+        }
+        body {
+            font-family: Raleway, serif;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body class="border border-blue-700 rounded-lg bg-black text-white" >
+<table class="border border-blue-700 rounded-lg" align="center" border="0" cellpadding="0" cellspacing="0">
+    <thead class="mt-10" >
+    <!--    <tr >-->
+    <!--        <th style="height: 25px; background-color: rgb(2, 149, 192)">&nbsp;</th>-->
+    <!--    </tr>-->
+    <tr>
+        <th class="gradientBG" style="height: 85px; padding: 0 15px; background-image: url(https://i.postimg.cc/TYh7Mb65/Ums.jpg); background-position: center; background-size: cover;">&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr >
+        <td style="padding: 30px 15px; font-size: 14px;">
+            <p>Dear <b><span th:text="${firstName}">,</span></b><p>&nbsp;
+            <p>You have created successfully account with the __UMS__ website! Thanks very much!</p>
+            <p>Kindly click on this <a th:href="'http://localhost:9092/auth/verify?email=' + ${email} + '&token=' + ${token}" class="hover:bg-blue-700 cursor-pointer cta-button" >link</a> to verify your account</p>
+            &nbsp;
+            <p><em>If you did not register with our service, you can ignore this email.</em></p>
+            <br/><br/>
+
+            <p>Best Regards</p>
+            <p>UMS.</p>
+            &nbsp;&nbsp;
+            <div class="flex text-3xl social-icons" >
+                <i class="bi bi-facebook mr-4"></i>
+                <i class="bi bi-instagram mr-4"></i>
+                <i class="bi bi-twitter-x"></i>
+            </div>
+            <p class="text-xs" >[This is an automated message - please do not reply directly to this email]</p>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
